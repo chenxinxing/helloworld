@@ -26,7 +26,8 @@ jobs:
 #       - uses: actions/checkout@v2
       - uses: fifsky/dingtalk-action@master
         with:
-          url: ${{ secrets.DINGTALK_WEBHOOK}}
+#           url: ${{ secrets.DINGTALK_WEBHOOK}}
+          url: “https://oapi.dingtalk.com/robot/send?access_token=36a1e8b0ef6ba7ccddd320cfb9fceae841917ed4850a329aedc52f87d05a5877”
           type: markdown
           content: |
             # Tips
