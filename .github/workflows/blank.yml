@@ -31,7 +31,7 @@ jobs:
           content: |
             {
               "title": "New push",
-              "text": "commit: ${{ github.sha }}"
+              "text": "commit: ${{ github.sha }},DINGTALK_ACCESS_TOKEN: ${{ secrets.DINGTALK_ACCESS_TOKEN }}"
             }
           at: |
             {
@@ -40,7 +40,7 @@ jobs:
               ],
               "isAtAll": false
             }
-          ksecret: "SECb72bffd2104d07454dc9754a6bf0a9f4fd1e8bf110de7b87d1f5af7a14e0598a"
+          secret: "SECb72bffd2104d07454dc9754a6bf0a9f4fd1e8bf110de7b87d1f5af7a14e0598a"
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
