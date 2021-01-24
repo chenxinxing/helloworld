@@ -27,6 +27,7 @@ jobs:
       - uses: ghostoy/dingtalk-action@master
         with:
           webhook: "https://oapi.dingtalk.com/robot/send?access_token=36a1e8b0ef6ba7ccddd320cfb9fceae841917ed4850a329aedc52f87d05a5877"
+          ksecret: "SECb72bffd2104d07454dc9754a6bf0a9f4fd1e8bf110de7b87d1f5af7a14e0598a"
           msgtype: markdown
           content: |
             {
