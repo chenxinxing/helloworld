@@ -24,22 +24,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 #       - uses: actions/checkout@v2
+      - name: 钉钉通知：下载开始
       - uses: ghostoy/dingtalk-action@master
         with:
           webhook: "https://oapi.dingtalk.com/robot/send?access_token=36a1e8b0ef6ba7ccddd320cfb9fceae841917ed4850a329aedc52f87d05a5877"
           msgtype: markdown
           content: |
             {
-              "title": "New push",
-              "text": "commit: ${{ github.sha }},DINGTALK_ACCESS_TOKEN: ${{ secrets.DINGTALK_ACCESS_TOKEN }}"
+              "title": "github.workflow 通知：",
+              "text": "**<font color=#00FF00 size=4>构建开始</font>** ### GitHub Action workflow **${{ github.workflow }}** 构建成功"
             }
-          at: |
-            {
-              "atMobiles": [
-                "13331009010"
-              ],
-              "isAtAll": false
-            }
+#           at: |
+#             {
+#               "atMobiles": [
+#                 "13331009010"
+#               ],
+#               "isAtAll": false
+#             }
           secret: "SECb72bffd2104d07454dc9754a6bf0a9f4fd1e8bf110de7b87d1f5af7a14e0598a"
 
       # Runs a set of commands using the runners shell
@@ -68,23 +69,18 @@ jobs:
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
           
-      - name: send dingtalk message
-        uses: ghostoy/dingtalk-action@master
+      - name: 钉钉通知
+      - uses: ghostoy/dingtalk-action@master
         with:
-          webhook: ${{ secrets.DINGTALK_WEBHOOK}}
+          webhook: "https://oapi.dingtalk.com/robot/send?access_token=36a1e8b0ef6ba7ccddd320cfb9fceae841917ed4850a329aedc52f87d05a5877"
           msgtype: markdown
           content: |
             {
-              "title": "chenxinxing/helloworld 构建通知",
-              "text": "已完成下载。"
+              "title": "github.workflow 通知：",
+              "text": "**<font color=#00FF00 size=4>构建完成</font>** ### GitHub Action workflow **${{ github.workflow }}** 下载成功，顺便ssh"
             }
-          at: |
-            {
-              "atMobiles": [
-                "13331009010"
-              ],
-              "isAtAll": false
-            }
+          secret: "SECb72bffd2104d07454dc9754a6bf0a9f4fd1e8bf110de7b87d1f5af7a14e0598a"
+
 
       - name: SSH 连接，设置menuconfig
 #       uses: mxschmitt/action-tmate@v1 #在退出连接后不能进行到下一个步骤，所以在实际使用中没有多少价值，只能用于 SSH 连接。
