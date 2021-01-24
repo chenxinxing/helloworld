@@ -50,6 +50,24 @@ jobs:
           make download -j8
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
+          
+      - name: send dingtalk message
+        uses: ghostoy/dingtalk-action@master
+        with:
+          webhook: ${{ secrets.DINGTALK_WEBHOOK}}
+          msgtype: markdown
+          content: |
+            {
+              "title": "chenxinxing/helloworld 构建通知",
+              "text": "已完成下载。"
+            }
+          at: |
+            {
+              "atMobiles": [
+                "13331009010"
+              ],
+              "isAtAll": false
+            }
 
       - name: SSH 连接，设置menuconfig
 #       uses: mxschmitt/action-tmate@v1 #在退出连接后不能进行到下一个步骤，所以在实际使用中没有多少价值，只能用于 SSH 连接。
