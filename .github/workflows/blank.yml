@@ -24,22 +24,22 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 #       - uses: actions/checkout@v2
-        - uses: ghostoy/dingtalk-action@master
-            with:
-              webhook: "https://oapi.dingtalk.com/robot/send?access_token=36a1e8b0ef6ba7ccddd320cfb9fceae841917ed4850a329aedc52f87d05a5877"
-              msgtype: markdown
-              content: |
-                {
-                  "title": "New push",
-                  "text": "commit: ${{ github.sha }}"
-                }
-              at: |
-                {
-                  "atMobiles": [
-                    "13331009010"
-                  ],
-                  "isAtAll": false
-                }
+      - uses: ghostoy/dingtalk-action@master
+        with:
+          webhook: "https://oapi.dingtalk.com/robot/send?access_token=36a1e8b0ef6ba7ccddd320cfb9fceae841917ed4850a329aedc52f87d05a5877"
+          msgtype: markdown
+          content: |
+            {
+              "title": "New push",
+              "text": "commit: ${{ github.sha }}"
+            }
+          at: |
+            {
+              "atMobiles": [
+                "13331009010"
+              ],
+              "isAtAll": false
+            }
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
